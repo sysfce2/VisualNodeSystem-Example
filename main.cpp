@@ -84,16 +84,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// Need to place that node in the center of the screen
 	Node* DefaultNode = new Node();
 	DefaultNode->SetName("Default node");
-	DefaultNode->AddSocket(new NodeSocket(DefaultNode, "EXEC", "in", false));
-	DefaultNode->AddSocket(new NodeSocket(DefaultNode, "EXEC", "out", true));
+	DefaultNode->AddSocket(new NodeSocket(DefaultNode, "EXEC", "in", NodeSocket::SocketFlow::Input));
+	DefaultNode->AddSocket(new NodeSocket(DefaultNode, "EXEC", "out", NodeSocket::SocketFlow::Output));
 	DefaultNode->SetPosition(ImVec2(WindowSize.x / 2.0f - DefaultNode->GetSize().x / 2.0f, 250.0f));
 	NodeArea->AddNode(DefaultNode);
 	
 	Node* RoundNode = new Node();
 	RoundNode->SetStyle(CIRCLE);
 	RoundNode->SetName("Round node");
-	RoundNode->AddSocket(new NodeSocket(RoundNode, "EXEC", "in", false));
-	RoundNode->AddSocket(new NodeSocket(RoundNode, "EXEC", "out", true));
+	RoundNode->AddSocket(new NodeSocket(RoundNode, "EXEC", "in", NodeSocket::SocketFlow::Input));
+	RoundNode->AddSocket(new NodeSocket(RoundNode, "EXEC", "out", NodeSocket::SocketFlow::Output));
 	RoundNode->SetPosition(ImVec2(WindowSize.x / 2.0f - RoundNode->GetSize().x / 2.0f, 400.0f));
 	NodeArea->AddNode(RoundNode);
 
@@ -136,7 +136,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// Demonstration of reroute nodes.
 	Node* RerouteDemostrationNode = new Node();
 	RerouteDemostrationNode->SetName("Some node");
-	RerouteDemostrationNode->AddSocket(new NodeSocket(RerouteDemostrationNode, "EXEC", "out", true));
+	RerouteDemostrationNode->AddSocket(new NodeSocket(RerouteDemostrationNode, "EXEC", "out", NodeSocket::SocketFlow::Output));
 	RerouteDemostrationNode->SetSize(RerouteDemostrationNode->GetSize() - ImVec2(80.0f, 0.0f));
 	RerouteDemostrationNode->SetPosition(ImVec2(10.0f, 490.0f));
 	NodeArea->AddNode(RerouteDemostrationNode);
@@ -149,7 +149,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	Node* RerouteDemostrationNodeEnd = new Node();
 	RerouteDemostrationNodeEnd->SetName("Some node");
-	RerouteDemostrationNodeEnd->AddSocket(new NodeSocket(RerouteDemostrationNodeEnd, "EXEC", "in", false));
+	RerouteDemostrationNodeEnd->AddSocket(new NodeSocket(RerouteDemostrationNodeEnd, "EXEC", "in", NodeSocket::SocketFlow::Input));
 	RerouteDemostrationNodeEnd->SetSize(RerouteDemostrationNodeEnd->GetSize() - ImVec2(80.0f, 0.0f));
 	RerouteDemostrationNodeEnd->SetPosition(ImVec2(350.0f, 490.0f));
 	NodeArea->AddNode(RerouteDemostrationNodeEnd);

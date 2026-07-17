@@ -20,7 +20,7 @@ bool CustomNode::isRegistered = []()
 CustomNode::CustomNode() : Node()
 {
 	Type = "CustomNode";
-	bCouldBeDestroyed = false;
+	bCouldBeCopiedByUser = false;
 
 	SetStyle(DEFAULT);
 
@@ -30,13 +30,13 @@ CustomNode::CustomNode() : Node()
 	TitleBackgroundColor = ImColor(31, 117, 208);
 	TitleBackgroundColorHovered = ImColor(35, 145, 255);
 	
-	AddSocket(new NodeSocket(this, "EXEC", "out", true));
+	AddSocket(new NodeSocket(this, "EXEC", "out", NodeSocket::SocketFlow::Output));
 }
 
 CustomNode::CustomNode(const CustomNode& Src) : Node(Src)
 {
 	Data = Src.Data;
-	bCouldBeDestroyed = false;
+	bCouldBeCopiedByUser = false;
 
 	SetStyle(DEFAULT);
 }

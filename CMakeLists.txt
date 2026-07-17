@@ -68,6 +68,7 @@ endif()
 set(imgui_SRC "")
 if(NOT VISUAL_NODE_SYSTEM_BUILD_SHARED_LIBS)
     list(APPEND imgui_SRC
+		"ThirdParty/imgui/misc/cpp/imgui_stdlib.cpp"
         "ThirdParty/imgui/imgui.cpp"
 	    "ThirdParty/imgui/imgui_demo.cpp"
 	    "ThirdParty/imgui/imgui_draw.cpp"
